@@ -17,23 +17,24 @@ public class EntryPoint {
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			session.getTransaction().begin();
-			Grades grade1 = new Grades(97,98,94);
-			Address add1 = new Address("Project 8", "Quezon City");
-			Address add2 = new Address("Dasmarinas","Cavite");
+			
+			Grades grade1 = new Grades(88,93,82);
+			Address add1 = new Address("Project 6", "Quezon City");
+			Address add2 = new Address("Tondo","Manila");
 			Student stud1 = new Student();
 			Teacher t1 = new Teacher();
 			
-			stud1.setFirstName("David");
-			stud1.setLastName("Mendoza");
-			stud1.setGender("Male");
-			stud1.setLevel(4);
+			stud1.setFirstName("Mary");
+			stud1.setLastName("Lamb");
+			stud1.setGender("Female");
+			stud1.setLevel(1);
 			stud1.setAddress(add1);
 			
-			t1.setFirstName("Mariam");
-			t1.setLastName("Santiago");
-			t1.setGender("Female");
+			t1.setFirstName("Carl");
+			t1.setLastName("Seldran");
+			t1.setGender("Male");
 			t1.setAddress(add2);
-			t1.getStudents().add(stud1);
+			stud1.getTeachers().add(t1);
 			
 			stud1.setGrade(grade1);
 			grade1.setStudent(stud1);

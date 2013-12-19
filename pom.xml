@@ -91,7 +91,7 @@
             <configuration
                     propertyfile="src/main/resources/hibernate.cfg.xml" />
             <hbm2ddl update="false" create="true" drop="true" export="false"
-                     outputfilename="testSchema2.ddl" format="true"
+                     outputfilename="schemaAnnotation.ddl" format="true"
                      console="true"/>
         </hibernatetool> 
     	</configuration>

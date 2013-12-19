@@ -3,13 +3,37 @@ package com.StudentCRUD.Domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Teacher")
 public class Teacher {
 	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", unique=true, nullable=false)
 	private Long id;
+	
+	@Column(name="first_name")
 	private String firstName;
+	
+	@Column(name="last_name")
 	private String lastName;
+	
+	@Column(name="gender")
 	private String gender;
+	
+	@ManyToOne @JoinColumn(name="address_id")
 	private Address address;
+	
+	@ManyToMany(mappedBy="teachers")
 	private Set<Student> students = new HashSet();
 	
 	public Teacher(){

@@ -1,11 +1,38 @@
 package com.StudentCRUD.Domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+@Entity
+@Table(name="Grades")
 public class Grades {
 	
+	@Id	
+	@GenericGenerator(name="generator", strategy="foreign",
+	parameters = @Parameter(name="property", value="student"))
+	@GeneratedValue(generator="generator")
+	@Column(name="student_id")
 	private Long studentId;
+	
+	@Column(name="math")
 	private int math;
+	
+	@Column(name="science")
 	private int science;
+	
+	@Column(name="english")
 	private int english;
+	
+	@OneToOne @PrimaryKeyJoinColumn
 	private Student student;
 	
 	private Grades(){

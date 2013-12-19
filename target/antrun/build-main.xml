@@ -5,7 +5,7 @@
   <mkdir dir="/home/dmendoza/workspace/StudentCRUD/target/sql/hibernate3"/>
   <hibernatetool destdir="/home/dmendoza/workspace/StudentCRUD/target/sql/hibernate3">
     <configuration configurationfile="/home/dmendoza/workspace/StudentCRUD/target/classes/hibernate.cfg.xml" propertyfile="src/main/resources/hibernate.cfg.xml"/>
-    <hbm2ddl update="false" export="false" console="true" outputfilename="testSchema2.ddl" drop="true" format="true" create="true"/>
+    <hbm2ddl update="false" export="false" console="true" outputfilename="schemaAnnotation.ddl" drop="true" format="true" create="true"/>
   </hibernatetool>
 </target>
 </project>

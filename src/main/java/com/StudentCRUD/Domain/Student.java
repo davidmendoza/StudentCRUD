@@ -3,15 +3,49 @@ package com.StudentCRUD.Domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Student")
 public class Student {
 	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", unique=true, nullable=false)
 	private Long id;
+	
+	@Column(name="first_name")
 	private String firstName;
+	
+	@Column(name="last_name")
 	private String lastName;
+	
+	@Column(name="gender")
 	private String gender;
+	
+	@Column(name="level")
 	private int level;
+	
+	@OneToOne(mappedBy="student", cascade=CascadeType.ALL)
 	private Grades grade;
+	
+	@ManyToOne @JoinColumn(name="address_id")
 	private Address address;
+	
+	@ManyToMany(cascade={CascadeType.ALL}) 
+	@JoinTable(name="Student_Teacher",
+	joinColumns={@JoinColumn(name="student_id")},
+	inverseJoinColumns={@JoinColumn(name="teacher_id")})
 	private Set<Teacher> teachers = new HashSet();
 
 	public Student(){

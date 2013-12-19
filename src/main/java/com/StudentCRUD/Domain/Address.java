@@ -3,12 +3,33 @@ package com.StudentCRUD.Domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Address")
 public class Address {
 	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", unique=true, nullable=false)
 	private Long id;
-	private String Area;
-	private String City;
+	
+	@Column(name="area")
+	private String area;
+	
+	@Column(name="city")
+	private String city;
+	
+	@OneToMany(mappedBy="address")
 	private Set<Teacher> teachers = new HashSet();
+	
+	@OneToMany(mappedBy="address")
 	private Set<Student> students = new HashSet();
 	
 	public Address(){
@@ -17,8 +38,8 @@ public class Address {
 	
 	public Address(String area, String city) {
 		super();
-		Area = area;
-		City = city;
+		this.area = area;
+		this.city = city;
 	}
 
 	public Long getId() {
@@ -30,19 +51,19 @@ public class Address {
 	}
 
 	public String getArea() {
-		return Area;
+		return area;
 	}
 
 	public void setArea(String area) {
-		Area = area;
+		this.area = area;
 	}
 
 	public String getCity() {
-		return City;
+		return city;
 	}
 
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 
 	public Set<Teacher> getTeachers() {

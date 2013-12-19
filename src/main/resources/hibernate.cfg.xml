@@ -18,10 +18,10 @@
  	<property name="current_session_context_class">thread</property> 
     <property name="connection.pool_size">1</property>
 
-	<mapping resource="Student.hbm.xml" />
-	<mapping resource="Teacher.hbm.xml"/>
-	<mapping resource="Grades.hbm.xml"/>
-	<mapping resource="Address.hbm.xml"/>
+	<mapping class="com.StudentCRUD.Domain.Student" />
+	<mapping class="com.StudentCRUD.Domain.Teacher"/>
+	<mapping class="com.StudentCRUD.Domain.Grades"/>
+	<mapping class="com.StudentCRUD.Domain.Address"/>
 	
 </session-factory>
 </hibernate-configuration>
