@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+ <hibernate-mapping>
+ 	<class name="com.StudentCRUD.Domain.Address" table="Address">
+ 		<id name="id" type="java.lang.Long" column="id">
+ 			<generator class="identity"/>
+ 		</id>
+ 		<property name="area" column="area" type="string"/>
+ 		<property name="city" column="city" type="string"/>
+ 		<set name="students" table="Student">
+ 			<key column="address_id"/>
+ 			<one-to-many class="com.StudentCRUD.Domain.Student"/>
+ 		</set>
+ 		<set name="teachers" table="Teacher">
+ 			<key column="address_id"/>
+ 			<one-to-many class="com.StudentCRUD.Domain.Teacher"/>
+ 		</set>
+ 		
+ 	</class>
+ </hibernate-mapping>

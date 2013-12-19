@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+ <hibernate-mapping>
+ 	<class name="com.StudentCRUD.Domain.Grades" table="Grades">
+ 		<id name="studentId" type="java.lang.Long">
+ 			<column name="student_id"/>
+ 			<generator class="foreign">
+ 				<param name="property">student</param>
+ 			</generator>
+ 		</id>
+ 		<one-to-one name="student" class="com.StudentCRUD.Domain.Student" constrained="true"/>
+ 		<property name="math" column="math" type="int"/>
+ 		<property name="science" column="science" type="int"/>
+ 		<property name="english" column="english" type="int"/>
+ 	</class>
+ </hibernate-mapping>
